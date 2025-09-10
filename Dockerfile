@@ -2,6 +2,10 @@
 FROM gradle:8.8.0-jdk21 AS build
 WORKDIR /app
 COPY . .
+
+# Dar permisos de ejecución a gradlew
+RUN chmod +x gradlew
+
 RUN ./gradlew build -x test
 
 # Stage 2: Runtime con OpenJDK 21
